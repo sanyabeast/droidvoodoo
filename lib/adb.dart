@@ -39,3 +39,23 @@ Future<Map<String, String>> getDeviceInfo(String deviceId) async {
     'Screen density': screenDensity.trim().split(": ")[1],
   };
 }
+
+Future<List<String>> getRunningApps() async {
+  final result = await Process.run('adb', ['shell', 'dumpsys', 'activity', 'activities']);
+  final output = result.stdout as String;
+  final lines = output.split('\n');
+
+  final runningApps = <String>[];
+
+  for (final line in lines) {
+    if (line.contains('Hist #')) {
+      final match =
+          RegExp(r'[ ]*Hist #[0-9]+: ActivityRecord{[^ ]* [^ ]* ([^ ]*) .*').firstMatch(line);
+      if (match != null && match.groupCount > 0) {
+        runningApps.add(match.group(1)!);
+      }
+    }
+  }
+
+  return runningApps;
+}

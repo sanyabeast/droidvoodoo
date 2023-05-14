@@ -2,12 +2,12 @@ import 'package:droidvoodoo/adb.dart';
 import 'package:droidvoodoo/state.dart';
 import 'package:flutter/material.dart';
 
-class deviceInfoPage extends StatefulWidget {
+class DeviceInfoPage extends StatefulWidget {
   @override
-  _deviceInfoPageState createState() => _deviceInfoPageState();
+  _DeviceInfoPageState createState() => _DeviceInfoPageState();
 }
 
-class _deviceInfoPageState extends State<deviceInfoPage> {
+class _DeviceInfoPageState extends State<DeviceInfoPage> {
   @override
   void initState() {
     if (dvdState.deviceInfo == null) {

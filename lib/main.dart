@@ -1,7 +1,7 @@
+import 'package:droidvoodoo/features/device_info.dart';
 import 'package:droidvoodoo/file_manager.dart';
-import 'package:droidvoodoo/device_info.dart';
 import 'package:droidvoodoo/state.dart';
-import 'package:droidvoodoo/widgets.dart';
+import 'package:droidvoodoo/features/app_main.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -23,11 +23,10 @@ class DroidVoodoo extends StatelessWidget {
 class AppMainPage extends StatelessWidget {
   final String title;
 
-  AppMainPage({Key? key, required this.title}) : super(key: key);
+  const AppMainPage({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
-        menuItems: {"File Manager": FileManagerPage(), 'Phone Info': deviceInfoPage()});
+    return AppMainView();
   }
 }
